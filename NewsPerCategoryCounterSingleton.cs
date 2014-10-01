@@ -25,12 +25,7 @@ namespace RssFeedReader
             return instance;
         }
 
-        public void addCategory(string category)
-        {
-            this.fillCategoryArray(category);
-        }
-
-        protected void fillCategoryArray(string category)
+        public void fillCategoryArray(string category)
         {
             int count;
             if (this.categoriesCounts.TryGetValue(category, out count))
