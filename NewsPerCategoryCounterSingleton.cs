@@ -12,9 +12,6 @@ namespace RssFeedReader
 
         Dictionary<string, int> categoriesCounts = new Dictionary<string, int>(); 
 
-        private string category = "";
-        private string title = "";
-
         private NewsPerCategoryCounterSingleton()
         {
         }
@@ -30,23 +27,20 @@ namespace RssFeedReader
 
         public void addCategoryAndTitle(string category, string title)
         {
-            this.category = category;
-            this.title = title;
-
-            this.fillCategoryArray();
+            this.fillCategoryArray(category, title);
         }
 
-        protected void fillCategoryArray()
+        protected void fillCategoryArray(string category, string title)
         {
             int count;
-            if (this.categoriesCounts.TryGetValue(this.category, out count))
+            if (this.categoriesCounts.TryGetValue(category, out count))
             {
                 count++;
-                this.categoriesCounts[this.category] = count;
+                this.categoriesCounts[category] = count;
             }
             else
             {
-                this.categoriesCounts.Add(this.category, 1);
+                this.categoriesCounts.Add(category, 1);
             }
         }
 
