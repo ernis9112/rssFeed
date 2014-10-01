@@ -33,8 +33,6 @@ namespace RssFeedReader
                     }
                 }
             }
-
-            System.Console.WriteLine(FeedsCounterSingleton.getInstance().getFeeds());
         }
 
     }
