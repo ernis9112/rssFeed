@@ -16,11 +16,11 @@ namespace RssFeedReader
             System.Console.WriteLine(FeedsCounterSingleton.getInstance().getFeeds());
 
             //Categories
-            NewsPerCategoryCounterSingleton.getInstance().addCategoryAndTitle("namai", "siandien kazkas tipo ale atsitiko");
-            NewsPerCategoryCounterSingleton.getInstance().addCategoryAndTitle("bites", "nieko naujo");
-            NewsPerCategoryCounterSingleton.getInstance().addCategoryAndTitle("bite", "nieko naujo");
-            NewsPerCategoryCounterSingleton.getInstance().addCategoryAndTitle("bite", "nieko naujo");
-            NewsPerCategoryCounterSingleton.getInstance().addCategoryAndTitle("bite", "nieko naujo");
+            NewsPerCategoryCounterSingleton.getInstance().addCategory("namai");
+            NewsPerCategoryCounterSingleton.getInstance().addCategory("bites");
+            NewsPerCategoryCounterSingleton.getInstance().addCategory("bite");
+            NewsPerCategoryCounterSingleton.getInstance().addCategory("bite");
+            NewsPerCategoryCounterSingleton.getInstance().addCategory("bite");
 
             var categories = NewsPerCategoryCounterSingleton.getInstance().getCategories();
 
