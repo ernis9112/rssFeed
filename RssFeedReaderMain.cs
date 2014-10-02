@@ -10,8 +10,8 @@ namespace RssFeedReader
     {
         static void Main(string[] args)
         {
-            RssReader.readOneFeed("http://www.delfi.lt/rss/feeds/lithuania.xml");            
-            RssReader.readOneFeed("http://www.15min.lt/rss");
+            RssReaderDelfi.readOneFeed("http://www.delfi.lt/rss/feeds/lithuania.xml");            
+            RssReader15min.readOneFeed("http://www.15min.lt/rss");
 
             Logger.getInstance().addLog("Nuskaitytas irasu kiekis: " + FeedsCounterSingleton.getInstance().getFeeds());
 
