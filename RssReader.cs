@@ -33,6 +33,7 @@ namespace RssFeedReader
                     }
                 }
             }
+            Logger.getInstance().addLog("Nuskaitytas naujas rss is url:" + url);
         }
 
     }
