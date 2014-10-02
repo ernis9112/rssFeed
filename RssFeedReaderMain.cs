@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace RssFeedReader
 {
-    class RssFeedReaderMain
+    class RssFeedReader
     {
         static void Main(string[] args)
         {
-            RssReader.readOneFeed("http://www.delfi.lt/rss/feeds/lithuania.xml");
+            RssReader.readOneFeed("http://www.delfi.lt/rss/feeds/lithuania.xml");            
             RssReader.readOneFeed("http://www.15min.lt/rss");
 
-            System.Console.WriteLine(FeedsCounterSingleton.getInstance().getFeeds());
+            Logger.getInstance().addLog("Nuskaitytas irasu kiekis: " + FeedsCounterSingleton.getInstance().getFeeds());
 
             //Categories
             NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("namai");
@@ -29,8 +29,7 @@ namespace RssFeedReader
             {
                 System.Console.Write("\"" + temp.Key.ToString() + "\" : " + temp.Value.ToString() + "\n");
             }
-
-            //stop program for a while
+        
             Console.ReadLine();
         }
     }
