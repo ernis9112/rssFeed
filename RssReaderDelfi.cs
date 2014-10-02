@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace RssFeedReader
 {
-    public class RssReader
+    public class RssReaderDelfi
     {
 
         public static void readOneFeed(string url)
