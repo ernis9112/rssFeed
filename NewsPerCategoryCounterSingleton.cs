@@ -36,6 +36,7 @@ namespace RssFeedReader
             else
             {
                 this.categoriesCounts.Add(category, 1);
+                Logger.getInstance().addLog("Skaiciujant prideta nauja kategorija: " + category);
             }
         }
 
