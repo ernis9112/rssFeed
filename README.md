@@ -1,4 +1,4 @@
 rssFeed
 =======
 
-RSS feeder with C#
+RSS feeder with Java
