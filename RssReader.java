@@ -7,14 +7,23 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;   
 import org.w3c.dom.NodeList;  
   
-public abstract class RssReader {
+public abstract class RssReader implements Reader {
 	
    private String name;
+   private boolean haveCategory = false;
   
    public RssReader() {}
    
    public void setName(String newName){
 		name = newName;
+   }
+   
+   public void setHaveCategory(boolean bool){
+	   haveCategory = bool;
+   }
+   
+   public boolean getHaveCategory(){
+	   return haveCategory;
    }
 
    public void writeFeed(String url) {
@@ -29,7 +38,9 @@ public abstract class RssReader {
          for (int i = 0; i < items.getLength(); i++) {  
             Element item = (Element)items.item(i);
             String fDate = getValue(item, "pubDate");
-            String fCate = getValue(item, "category");
+            String fCate = "None";
+            if(haveCategory)
+            	fCate = getValue(item, "category");
             String fLink = getValue(item, "link");
             String fTitl = getValue(item, "title");
     		try {
@@ -45,6 +56,9 @@ public abstract class RssReader {
    }  
   
    public String getValue(Element parent, String nodeName) {  
-      return parent.getElementsByTagName(nodeName).item(0).getFirstChild().getNodeValue();  
+      String result = parent.getElementsByTagName(nodeName).item(0).getFirstChild().getNodeValue(); 
+      if(result == null)
+    	  result = "Empty";
+      return result;
    }  
 }  
