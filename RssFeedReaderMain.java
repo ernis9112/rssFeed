@@ -25,10 +25,17 @@ public class RssFeedReaderMain {
 		// Strategy end-----------------------------------------------
 
 		NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("namai");
-        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bites");
-        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
-        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
-        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
+	        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bites");
+	        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
+	        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
+	        NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
+        
+	        //Facade start
+	        Facade facade = new Facade();
+	        
+	        LinkedHashMap categories = facade.getNewsPerCategoryCounts();
+	        
+	        //Facade end
 
 	}
 
