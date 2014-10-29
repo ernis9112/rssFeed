@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
+
 public class RssFeedReaderMain {
 
 	public static void main(String[] args) {
 		
+		// Factory
 		RssReader reader = null;
 		RssReaderFactory readerFactory = new RssReaderFactory();
 		reader = readerFactory.createReader("15min");
@@ -10,7 +14,14 @@ public class RssFeedReaderMain {
 	         reader.writeFeed("http://www.15min.lt/rss");  
 	    } catch (Exception e) {  
 	         e.printStackTrace();  
-	    } 
+	    }
+		// Factory end
+		
+		// Strategy
+		FilteredFeeds fFeeds = null;
+		fFeeds = new FilteredFeeds(new FeedsByAuthorFilter());
+		ArrayList<String> filteredFeeds = fFeeds.executeFiltering();
+		// Strategy end
 		
 		NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("namai");
         NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bites");
