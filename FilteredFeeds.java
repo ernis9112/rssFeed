@@ -5,9 +5,13 @@ class FilteredFeeds {
 	
     private FilterType filter;
  
-    public FilteredFeeds(FilterType ifilter) {
-        this.filter = ifilter;
+    public FilteredFeeds() {
     }
+    
+    public void setFilter(FilterType ifilter){
+    	this.filter = ifilter;
+    }
+    
     public void executeFiltering() {
         this.filter.filter();
     }
