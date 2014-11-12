@@ -3,15 +3,20 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
  
-public class Database
-{
+public class Database implements IConnection
+{	
+	public Connection connection = null;
+	public Statement stmt = null;
 	
-    public void executeQuery(String query, String type) throws Exception
+	public Database(String connStr) throws Exception
+	{
+		this.connection = DriverManager.getConnection(connStr);
+		this.stmt = this.connection.createStatement();
+	}
+	
+	@Override
+	public void executeQuery(String query, String type) throws Exception
     {
-        String sTempDb = "database.db";
-        String sJdbc = "jdbc:sqlite";
-        String sDbUrl = sJdbc + ":" + sTempDb;
-
         int iTimeout = 30;
         String sMakeTable = "CREATE TABLE IF NOT EXISTS rssfeeds (date text, author text, category text, link text, title text, UNIQUE(title))";
         
@@ -23,11 +28,8 @@ public class Database
         
         if(type.equals("select"))
             sMakeSelect = query;
- 
-        // create a database connection
-        Connection conn = DriverManager.getConnection(sDbUrl);
+
         try {
-            Statement stmt = conn.createStatement();
             try {
                 stmt.setQueryTimeout(iTimeout);
                 stmt.executeUpdate( sMakeTable );
@@ -46,10 +48,10 @@ public class Database
                     }
                 }
             } finally {
-                try { stmt.close(); } catch (Exception ignore) {}
+                try {} catch (Exception ignore) {}
             }
         } finally {
-            try { conn.close(); } catch (Exception ignore) {}
+            try {} catch (Exception ignore) {}
         }
     }
  
