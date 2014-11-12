@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-
-
 class FilteredFeeds {
 	
     private FilterType filter;
@@ -12,7 +9,7 @@ class FilteredFeeds {
     	this.filter = ifilter;
     }
     
-    public void executeFiltering() {
+    public void executeFiltering() throws Exception {
         this.filter.filter();
     }
 }
