@@ -1,11 +1,9 @@
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 
 public class RssFeedReaderMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		// Factory----------------------------------------------------
 		RssReader reader = null;
@@ -30,7 +28,7 @@ public class RssFeedReaderMain {
 		fFeeds.executeFiltering();
 		// Strategy end-----------------------------------------------
 		
-		NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("namai");
+	NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("namai");
         NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bites");
         NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
         NewsPerCategoryCounterSingleton.getInstance().fillCategoryArray("bite");
