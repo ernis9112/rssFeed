@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-
-
 public class FeedsByCategoryFilter implements FilterType {
 	
 	private String category;
@@ -9,14 +6,14 @@ public class FeedsByCategoryFilter implements FilterType {
 		this.category = iCategory;
 	}
 	
-	public void filter(){
+	public void filter() throws Exception{
 		// get feeds from database
-		Database db = new Database();
+		final IConnection conn = new ProxyConnection();
 		try {
-			db.executeQuery("SELECT title from rssfeeds WHERE category = '" + category + "'", "select");
+			conn.executeQuery("SELECT title from rssfeeds WHERE category = '" + category + "'", "select");
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}	
 	}
 
 }
