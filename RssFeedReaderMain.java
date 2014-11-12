@@ -21,7 +21,12 @@ public class RssFeedReaderMain {
 		
 		// Strategy---------------------------------------------------
 		FilteredFeeds fFeeds = null;
-		fFeeds = new FilteredFeeds(new FeedsByCategoryFilter("Futbolas"));
+		fFeeds = new FilteredFeeds();
+		
+		fFeeds.setFilter(new FeedsByCategoryFilter("Futbolas"));		
+		fFeeds.executeFiltering();
+		
+		fFeeds.setFilter(new FeedsByAuthorFilter("15min"));		
 		fFeeds.executeFiltering();
 		// Strategy end-----------------------------------------------
 		
