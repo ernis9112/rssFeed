@@ -49,6 +49,34 @@ public class RssFeedReaderMain {
         read2.writeFeed("http://www.15min.lt/rss");
         // Abstract factory end ----------------------------------------
 
+	// State factory------------------------------------------------
+        ProcessContext context = new ProcessContext();
+        
+        StartState startState = new StartState();
+        startState.doAction(context);
+        System.out.println(context.getState().toString());
+
+        RssReader reader2 = null;
+		RssReaderFactory readerFactory2 = new RssReaderFactory();
+		reader = readerFactory2.createReader("15min");
+		
+		try {
+	         reader.writeFeed("http://www.15min.lt/rss");  
+	    } catch (Exception e) {
+	    	FailedState failedState = new FailedState();
+	    	failedState.doAction(context);
+	        System.out.println(context.getState().toString());
+	        e.printStackTrace();  
+	    }
+        
+        ProgressState progressState = new ProgressState();
+        progressState.doAction(context);
+        System.out.println(context.getState().toString());
+        
+        DoneState doneState = new DoneState();
+        doneState.doAction(context);
+        System.out.println(context.getState().toString());
+        // State end ---------------------------------------------------
 	}
 
 }
